@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7819132403898272564}
   - component: {fileID: 4252332336802880943}
-  - component: {fileID: -3916875170337896980}
+  - component: {fileID: 2510702845493721446}
   m_Layer: 0
   m_Name: weapon_knife
   m_TagString: Untagged
@@ -81,24 +81,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &-3916875170337896980
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &2510702845493721446
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607724223314445263}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20105ce9b68c9648adeb74d9dec5f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
