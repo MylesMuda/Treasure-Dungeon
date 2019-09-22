@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public GameObject crossHair;
+    public GameObject knifePrefab;
 
     [SerializeField]
     private int moveSpeed;
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+
+
     Vector3 movement;
     Vector3 aim;
 
@@ -25,13 +28,8 @@ public class PlayerMovement : MonoBehaviour
         movement = new Vector3(Input.GetAxis("MoveHorizontal"), Input.GetAxis("MoveVertical"), 0.0f);
         aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"), 0.0f);
 
-        //if (Input.GetButton("Attack"))
-        //{
-        //    Debug.Log("Attack");
-        //}
-
         //rb.velocity = movement;
-        MoveCrosshair();
+        AimAndShoot();
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
@@ -39,24 +37,29 @@ public class PlayerMovement : MonoBehaviour
         transform.position = transform.position + movement * moveSpeed * Time.deltaTime;
     }
 
-    private void MoveCrosshair()
+    private void AimAndShoot()
     {
+        Vector2 shootDirection = new Vector2(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"));
+
         if(aim.magnitude > 0.0f)
         {
             aim.Normalize();
             //aim *= 0.4f;
             crossHair.transform.localPosition = aim * aimDist;
             crossHair.SetActive(true);
+
+            shootDirection.Normalize();
+            if (Input.GetButtonDown("Attack"))
+            {
+                GameObject knife = Instantiate(knifePrefab, transform.position, Quaternion.Euler(transform.eulerAngles + new Vector3(0, 0, 270f)));
+                //knifePrefab.transform.Rotate(90, 0, 0);
+                knife.GetComponent<Rigidbody2D>().velocity = shootDirection * 10f;
+            }
         }
         else
         {
             crossHair.SetActive(false);
         }
-    }
-
-    private void AimAndHit()
-    {
-
     }
 
     private void ProcessInputs()
