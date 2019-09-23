@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 knifeScript.velocity = shootDirection * 15f;
                 knifeScript.knight = gameObject;
                 knife.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
-                Destroy(knife, 1.0f);
+                //Destroy(knife, 1.0f);
             }
         }
         else
