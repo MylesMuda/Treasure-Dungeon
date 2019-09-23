@@ -37,6 +37,7 @@ public class knife : MonoBehaviour
                 if (other.CompareTag("Wall"))
                 {
                     Destroy(gameObject);
+
                     break;
                 }
             }

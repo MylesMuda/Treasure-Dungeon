@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         if (movement.magnitude > (1.0f))
         {
             movement.Normalize();
+            
         }
 
     }
@@ -108,6 +109,4 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
     }
-
-
 }
