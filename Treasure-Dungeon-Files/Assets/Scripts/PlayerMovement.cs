@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public GameObject crossHair;
     public GameObject knifePrefab;
+    public GameObject throwPoint;    
     public bool useController;
 
     [SerializeField]
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             shootDirection.Normalize();
             if (stopAiming)
             {
-                GameObject knife = Instantiate(knifePrefab, transform.position, Quaternion.Euler(transform.eulerAngles + new Vector3(0, 0, 270f)));
+                GameObject knife = Instantiate(knifePrefab, throwPoint.transform.position, Quaternion.Euler(transform.eulerAngles + new Vector3(0, 0, 270f)));
                 //knifePrefab.transform.Rotate(90, 0, 0);
                 knife knifeScript = knife.GetComponent<knife>();
                 knifeScript.velocity = shootDirection * 15f;
