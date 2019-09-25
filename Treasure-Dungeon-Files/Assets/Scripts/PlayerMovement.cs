@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject crossHair;
     public GameObject knifePrefab;
     public GameObject throwPoint;    
-    public bool useController;
+    public bool useController = false;
+    public PlayerHealth pH;
 
     [SerializeField]
     private int moveSpeed;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D rb;
+
 
     Vector3 movement;
     Vector3 aim;
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         AimAndShoot();
         Animate();
         Move();
+        //onCollisionWithEnemy();
     }
 
     private void Move()
@@ -75,6 +79,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void ProcessInputs()
     {
+        string[] NoOfControllers = Input.GetJoystickNames();
+
+        //switch to controller if controller is detected
+        if(NoOfControllers.Length > 0)
+        {
+            foreach(var controller in NoOfControllers)
+            {
+                if (!string.IsNullOrEmpty(controller))
+                {
+                    useController = true;
+                }
+                else
+                {
+                    useController = false;
+                }
+            }
+        }
+
         if (useController)
         {
             movement = new Vector3(Input.GetAxis("MoveHorizontal"), Input.GetAxis("MoveVertical"), 0.0f);
@@ -109,5 +131,37 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
+    }
+
+    //void OnTriggerEnter2D(Collision2D col)
+    //{
+    //    if ()
+    //    {
+    //        //GameObject.Find("GameLogic").GetComponent<GameLogic>().SpawnOgre(other);
+    //        pH.health -= 1;
+            
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Damage();
+        }
+    }
+
+    void Damage()
+    {
+        pH.health--;
+        if(pH.health <= 0)
+        {
+            RestartLevel();
+        }
+    }
+
+    void RestartLevel()
+    {
+        SceneManager.LoadScene("Test-Area");
     }
 }

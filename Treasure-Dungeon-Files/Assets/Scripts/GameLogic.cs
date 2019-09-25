@@ -10,7 +10,6 @@ public class GameLogic : MonoBehaviour
     public void SpawnOgre(GameObject Ogre){
         GameObject spawnPoint = GetRandomSpawnPoint();
         Ogre.transform.position = spawnPoint.transform.position;
-
     }
 
     GameObject GetRandomSpawnPoint(){
