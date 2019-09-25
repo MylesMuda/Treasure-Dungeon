@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject knifePrefab;
     public GameObject throwPoint;    
     public bool useController = false;
-    public PlayerHealth pH;
+    public PlayerHealth playerHealth;
 
     [SerializeField]
     private int moveSpeed;
@@ -133,15 +133,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
     }
 
-    //void OnTriggerEnter2D(Collision2D col)
-    //{
-    //    if ()
-    //    {
-    //        //GameObject.Find("GameLogic").GetComponent<GameLogic>().SpawnOgre(other);
-    //        pH.health -= 1;
-            
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -153,8 +144,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Damage()
     {
-        pH.health--;
-        if(pH.health <= 0)
+        playerHealth.health--;
+        if(playerHealth.health <= 0)
         {
             RestartLevel();
         }

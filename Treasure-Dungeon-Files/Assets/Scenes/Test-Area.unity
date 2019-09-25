@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1024, y: 768}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2635,7 +2635,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &467388500
 RectTransform:
@@ -12498,6 +12498,11 @@ PrefabInstance:
     - target: {fileID: 3885379067342095698, guid: 416031003a38a5744a9bf7e075016741,
         type: 3}
       propertyPath: pH
+      value: 
+      objectReference: {fileID: 151619089}
+    - target: {fileID: 3885379067342095698, guid: 416031003a38a5744a9bf7e075016741,
+        type: 3}
+      propertyPath: playerHealth
       value: 
       objectReference: {fileID: 151619089}
     m_RemovedComponents: []
