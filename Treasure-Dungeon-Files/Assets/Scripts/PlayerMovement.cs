@@ -154,5 +154,6 @@ public class PlayerMovement : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene("Test-Area");
+        Score.score = 0;
     }
 }
