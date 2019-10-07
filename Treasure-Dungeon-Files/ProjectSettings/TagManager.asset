@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Object
   - Wall
+  - Chest
   layers:
   - Default
   - TransparentFX

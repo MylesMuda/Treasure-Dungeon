@@ -140,6 +140,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Damage();
         }
+        else if (collision.CompareTag("Chest")){
+            GameObject.Find("Chest").GetComponent<Chest>().ChestOpen();
+        }
     }
 
     void Damage()
