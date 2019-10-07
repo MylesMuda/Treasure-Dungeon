@@ -10,9 +10,12 @@ public class GameLogic : MonoBehaviour
     public void SpawnOgre(GameObject Ogre){
         GameObject spawnPoint = GetRandomSpawnPoint();
         Ogre.transform.position = spawnPoint.transform.position;
+        //GameObject.Find("Score").GetComponent<Score>().score;
+        Score.score += 100;
     }
 
     GameObject GetRandomSpawnPoint(){
         return spawnPoints[Random.Range(0, spawnPoints.Length)];
     }
+
 }

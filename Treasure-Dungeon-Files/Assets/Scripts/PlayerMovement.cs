@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         AimAndShoot();
         Animate();
         Move();
-        //onCollisionWithEnemy();
+        
     }
 
     private void Move()
@@ -133,12 +133,13 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
+    void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.tag == "Enemy")
         {
             Damage();
+        }
+        else if (collision.gameObject.tag == "Chest"){
+            collision.gameObject.GetComponent<Chest>().ChestOpen();
         }
     }
 
@@ -154,5 +155,6 @@ public class PlayerMovement : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene("Test-Area");
+        Score.score = 0;
     }
 }
