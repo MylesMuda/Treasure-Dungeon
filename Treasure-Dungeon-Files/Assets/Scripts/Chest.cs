@@ -6,23 +6,22 @@ public class Chest : MonoBehaviour
 {
     public Animator chestAnimator;
 
-    private int NoOfChests = 3;
-
-    void Update(){
-        ChestOpen();
-    }
-
+    public static int NoOfChests = 0;
 
     public void checkChests(){
+        Debug.Log($"Number of Chests is {NoOfChests}");
         if(NoOfChests == 3){
-            GameObject.Find("DoorController").GetComponent<DoorController>().OpenDoor();
+            GameObject.Find("Exit_Door").GetComponent<DoorController>().OpenDoor();
         }
     }
-
+    
     public void ChestOpen(){
         chestAnimator.SetBool("Open", true);
         NoOfChests++;
-        // checkChests();
+        checkChests();
+        
+        //gameObject.SetActive(false);
         // Destroy(gameObject);
+        //chestAnimator.SetBool("Open", false);
     }
 }
