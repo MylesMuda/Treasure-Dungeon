@@ -18,10 +18,26 @@ public class Chest : MonoBehaviour
     public void ChestOpen(){
         chestAnimator.SetBool("Open", true);
         NoOfChests++;
-        checkChests();
+        checkChests(); //CALL IN GAMELOGIC INSTEAD
         
         //gameObject.SetActive(false);
         // Destroy(gameObject);
         //chestAnimator.SetBool("Open", false);
+
+    }
+
+    IEnumerator removeChest(){
+        yield return new WaitForSeconds(1f);
+        var timeToFade = 0.7f;
+        var currentTime = 0f;
+
+        var spr = this.GetComponent<SpriteRenderer>();
+
+        while(currentTime <= timeToFade){
+             
+            Mathf.Lerp(0,1,currentTime); // look up online lerp from alpha to 0
+            currentTime -= Time.deltaTime;
+        }
+        Destroy(gameObject);
     }
 }
