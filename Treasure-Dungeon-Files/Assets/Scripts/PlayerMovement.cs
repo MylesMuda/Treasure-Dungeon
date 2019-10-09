@@ -139,7 +139,9 @@ public class PlayerMovement : MonoBehaviour
             Damage();
         }
         else if (collision.gameObject.tag == "Chest"){
+
             collision.gameObject.GetComponent<Chest>().ChestOpen();
+            //Chest.isOpen = false;
         }
     }
 
