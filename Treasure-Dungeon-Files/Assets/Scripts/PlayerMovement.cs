@@ -140,8 +140,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Chest"){
 
-            collision.gameObject.GetComponent<Chest>().ChestOpen(true);
-            Chest.isOpen = false;
+            collision.gameObject.GetComponent<Chest>().ChestOpen();
+            //Chest.isOpen = false;
         }
     }
 
