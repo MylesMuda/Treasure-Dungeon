@@ -8173,6 +8173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348234716}
+  - component: {fileID: 1348234717}
   m_Layer: 0
   m_Name: Chests
   m_TagString: Untagged
@@ -8197,6 +8198,24 @@ Transform:
   m_Father: {fileID: 101224438}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1348234717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348234715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960893dc2f1e32a47876fb5f9e0d788a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestImages:
+  - {fileID: 1698247303}
+  - {fileID: 1699750956}
+  - {fileID: 1985208763}
+  chestOpened: {fileID: 21300000, guid: 67095e704279d1540aedf8b69eb6be83, type: 3}
+  chestClosed: {fileID: 21300000, guid: ddfb03d12e08aee40b483b4ccee32d8c, type: 3}
 --- !u!1001 &1363673504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12202,7 +12221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -448.1, y: 290.69995}
+  m_AnchoredPosition: {x: -449, y: 292}
   m_SizeDelta: {x: 45.08, y: 44.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698247303
@@ -12275,7 +12294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -331.1, y: 290.69998}
+  m_AnchoredPosition: {x: -383.9, y: 292.00003}
   m_SizeDelta: {x: 44.6, y: 44.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1699750956
@@ -13033,7 +13052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: 290.69998}
+  m_AnchoredPosition: {x: -320, y: 292.00003}
   m_SizeDelta: {x: 44.6, y: 44.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985208763

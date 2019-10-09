@@ -7,35 +7,29 @@ public class Chest : MonoBehaviour
 {
     public Animator chestAnimator;
 
-    public static int NoOfChests = 0;
+    //public static int NoOfChests = 0;
 
     public bool isOpen = false;
 
     //public Image[] chestImages;
 
-    void Update(){
-    }
+    // public void checkChests(){
+    //     //Debug.Log($"Number of Chests is {NoOfChests}");
 
-    public void checkChests(){
-        //Debug.Log($"Number of Chests is {NoOfChests}");
-
-        if(NoOfChests == 3){
-            GameObject.Find("Exit_Door").GetComponent<DoorController>().OpenDoor();
-        }
-    }
+    //     if(NoOfChests == 3){
+    //         GameObject.Find("Exit_Door").GetComponent<DoorController>().OpenDoor();
+    //     }
+    // }
     
     public void ChestOpen(){
         if(!isOpen){
             chestAnimator.SetBool("Open", true);
-            NoOfChests++;
+            ChestUI.NoOfChests++;
             //gameObject.SetActive(false);
+            GameObject.Find("Chests").GetComponent<ChestUI>().displayChest();
             StartCoroutine(removeChest());
             isOpen = true;
         }
-        //checkChests(); //CALL IN GAMELOGIC INSTEAD
-        //gameObject.SetActive(false);
-        // Destroy(gameObject);
-        //chestAnimator.SetBool("Open", false);
     }
 
     IEnumerator removeChest(){
@@ -51,11 +45,10 @@ public class Chest : MonoBehaviour
             
             spr.color = new Color(spr.color.r, spr.color.g, spr.color.b,  Mathf.Lerp(1f, 0f, currentTime/timeToFade));
 
-            //Mathf.Lerp(0,1,currentTime); // look up online lerp from alpha to 0
-
             yield return null;
         }
-        checkChests();
+        
+        GameObject.Find("Chests").GetComponent<ChestUI>().checkChests();
         //gameObject.SetActive(false);
         Destroy(this.gameObject);
 
