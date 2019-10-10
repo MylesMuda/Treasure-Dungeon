@@ -14,7 +14,6 @@ public class ChestUI : MonoBehaviour
    public Sprite chestClosed;
 
    public void checkChests(){
-        //Debug.Log($"Number of Chests is {NoOfChests}");
 
         if(NoOfChests == 3){
             GameObject.Find("Exit_Door").GetComponent<DoorController>().OpenDoor();
