@@ -142,6 +142,10 @@ public class PlayerMovement : MonoBehaviour
 
             collision.gameObject.GetComponent<Chest>().ChestOpen();
         }
+        else if (collision.gameObject.tag== "Coin"){
+            Score.score += 50;
+            Destroy(collision.gameObject);
+        }
     }
 
     void Damage()

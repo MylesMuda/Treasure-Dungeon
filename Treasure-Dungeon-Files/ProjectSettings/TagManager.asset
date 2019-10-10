@@ -8,6 +8,7 @@ TagManager:
   - Object
   - Wall
   - Chest
+  - Coin
   layers:
   - Default
   - TransparentFX
