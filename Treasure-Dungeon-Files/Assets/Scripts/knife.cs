@@ -25,7 +25,7 @@ public class knife : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     Destroy(gameObject);
-                    GameObject.Find("GameLogic").GetComponent<GameLogic>().SpawnOgre(other);
+                    GameObject.Find("Big Demon").GetComponent<EnemyHealth>().DamageEnemy();
                     break;
                 }
 

@@ -17,11 +17,5 @@ public class Score : MonoBehaviour
 
     void Update(){
         Scoreboard.text = "SCORE:"+score.ToString("0000");
-        // AddScore(score);
     }
-
-    // public void AddScore(int points){
-    //     score += points;
-    //     Scoreboard.text = $"Score : {score.ToString()}";
-    // }
 }
