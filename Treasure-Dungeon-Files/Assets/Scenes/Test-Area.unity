@@ -296,7 +296,6 @@ GameObject:
   m_Component:
   - component: {fileID: 59379226}
   - component: {fileID: 59379229}
-  - component: {fileID: 59379228}
   - component: {fileID: 59379227}
   - component: {fileID: 59379230}
   m_Layer: 0
@@ -339,27 +338,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &59379228
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59379225}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!212 &59379229
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -569,6 +547,7 @@ GameObject:
   - component: {fileID: 106254579}
   - component: {fileID: 106254583}
   - component: {fileID: 106254584}
+  - component: {fileID: 106254585}
   m_Layer: 0
   m_Name: Big Demon
   m_TagString: Enemy
@@ -682,9 +661,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012535095, y: 0}
+  m_Offset: {x: -0.0054984093, y: -0.04808855}
   serializedVersion: 2
-  m_Radius: 0.91365576
+  m_Radius: 0.63113594
 --- !u!114 &106254584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,8 +676,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c865efe823ebe645b0c03324f810ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 106254578}
   maxHealth: 2
+  enemyRB: {fileID: 106254585}
+  enemyAnim: {fileID: 0}
+--- !u!50 &106254585
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106254578}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &119762916
 PrefabInstance:
   m_ObjectHideFlags: 0
