@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     public void DamageEnemy(){
         enemyHealth--;
         //enemyAnim.SetBool("isHurt", true);
+        //gameObject.GetComponent<AIPath>().canMove = true;
         checkEnemyHealth();
     }
 
@@ -34,10 +36,23 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth = maxHealth;
     }
 
-    public void EnemyKnockback(Vector2 knife){     
-        Vector3 knifeDir = knife;
-        Vector3 moveDirection = gameObject.transform.position - knifeDir;
-        enemyRB.AddForce(moveDirection.normalized * 4000f);
+    public IEnumerator EnemyKnockback(Vector2 knife){
+        
+        // var stunTime = 1.5f;
+        // var stunStart = 0.0f;
+
+        // while(stunStart < stunTime){
+        //     stunStart += Time.deltaTime;
+        
+            gameObject.GetComponent<AIPath>().canMove = false;
+            Vector3 knifeDir = knife;
+            Vector3 moveDirection = gameObject.transform.position - knifeDir;
+            enemyRB.AddForce(moveDirection * 3f);
+            yield return new WaitForSeconds(2);
+            gameObject.GetComponent<AIPath>().canMove = true;
+           
+        //Debug.Log(moveDirection);
+        //enemyRB.AddForce(transform.up * 500f + transform.right * 500f);
         //enemyAnim.SetBool("isHurt", false);
     }
     

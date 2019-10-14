@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class knife : MonoBehaviour
 {
@@ -22,8 +23,10 @@ public class knife : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     Destroy(gameObject);
-                    other.GetComponent<EnemyHealth>().EnemyKnockback(newPos);
+                    StartCoroutine(other.GetComponent<EnemyHealth>().EnemyKnockback(newPos));
+                    //other.GetComponent<EnemyHealth>().EnemyKnockback(newPos);
                     other.GetComponent<EnemyHealth>().DamageEnemy();
+                    //other.GetComponent<AIPath>().canMove = true;
                     break;
                 }
 
