@@ -36,21 +36,24 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth = maxHealth;
     }
 
-    public IEnumerator EnemyKnockback(Vector2 knife){
+    public IEnumerator EnemyKnockback(GameObject knife,  Vector2 knifePos){
         
         // var stunTime = 1.5f;
         // var stunStart = 0.0f;
 
         // while(stunStart < stunTime){
         //     stunStart += Time.deltaTime;
-        
             gameObject.GetComponent<AIPath>().canMove = false;
-            Vector3 knifeDir = knife;
+            Vector3 knifeDir = knifePos;
             Vector3 moveDirection = gameObject.transform.position - knifeDir;
-            enemyRB.AddForce(moveDirection * 3f);
-            yield return new WaitForSeconds(2);
+            enemyRB.AddForce(moveDirection * 30f);
+            yield return new WaitForSeconds(0.5f);
+            //yield return null;
+            Debug.Log("Knockback");
+
             gameObject.GetComponent<AIPath>().canMove = true;
-           
+            
+            //yield return null;
         //Debug.Log(moveDirection);
         //enemyRB.AddForce(transform.up * 500f + transform.right * 500f);
         //enemyAnim.SetBool("isHurt", false);
