@@ -36,11 +36,13 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void LoadMenu(){
+    public void RestartMenu(){
         Debug.Log("Loading menu!");
+        GameObject.Find("GameLogic").GetComponent<GameLogic>().RestartLevel();
     }
 
     public void QuitGame(){
         Debug.Log("Quitting Game!");
+        Application.Quit();
     }
 }

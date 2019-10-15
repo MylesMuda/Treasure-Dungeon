@@ -43,14 +43,14 @@ public class EnemyHealth : MonoBehaviour
 
         // while(stunStart < stunTime){
         //     stunStart += Time.deltaTime;
-            gameObject.GetComponent<AIPath>().canMove = false;
+            gameObject.GetComponent<AIPath>().canSearch = false;
             Vector3 knifeDir = knifePos;
             Vector3 moveDirection = gameObject.transform.position - knifeDir;
             enemyRB.AddForce(moveDirection * 300f);
             StartCoroutine(StunTimer());
             //yield return null;
             Debug.Log("Knockback");
-            gameObject.GetComponent<AIPath>().canMove = true;
+            gameObject.GetComponent<AIPath>().canSearch = true;
             
             //yield return null;
         //Debug.Log(moveDirection);

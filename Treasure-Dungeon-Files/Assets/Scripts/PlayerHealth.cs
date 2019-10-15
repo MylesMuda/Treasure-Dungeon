@@ -49,4 +49,14 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+
+    public void Damage()
+    {
+        health--;
+        if(health <= 0)
+        {
+            GameObject.Find("GameLogic").GetComponent<GameLogic>().RestartLevel();
+        }
+    }
+
 }

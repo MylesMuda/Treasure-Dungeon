@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.tag == "Enemy")
         {
-            Damage();
+            GameObject.Find("Knight").GetComponent<PlayerHealth>().Damage();
         }
         else if (collision.gameObject.tag == "Chest"){
 
@@ -148,18 +148,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Damage()
-    {
-        playerHealth.health--;
-        if(playerHealth.health <= 0)
-        {
-            RestartLevel();
-        }
-    }
+    // void Damage()
+    // {
+    //     playerHealth.health--;
+    //     if(playerHealth.health <= 0)
+    //     {
+    //         RestartLevel();
+    //     }
+    // }
 
-    void RestartLevel()
-    {
-        SceneManager.LoadScene("Test-Area");
-        Score.score = 0;
-    }
+    // void RestartLevel()
+    // {
+    //     SceneManager.LoadScene("Test-Area");
+    //     Score.score = 0;
+    // }
 }

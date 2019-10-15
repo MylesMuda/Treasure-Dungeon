@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -19,5 +20,11 @@ public class GameLogic : MonoBehaviour
 
     GameObject GetRandomSpawnPoint(){
         return spawnPoints[Random.Range(0, spawnPoints.Length)];
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Test-Area");
+        Score.score = 0;
     }
 }
