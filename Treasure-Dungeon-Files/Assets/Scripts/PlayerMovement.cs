@@ -147,19 +147,4 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-
-    // void Damage()
-    // {
-    //     playerHealth.health--;
-    //     if(playerHealth.health <= 0)
-    //     {
-    //         RestartLevel();
-    //     }
-    // }
-
-    // void RestartLevel()
-    // {
-    //     SceneManager.LoadScene("Test-Area");
-    //     Score.score = 0;
-    // }
 }
