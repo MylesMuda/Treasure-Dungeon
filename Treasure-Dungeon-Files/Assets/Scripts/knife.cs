@@ -26,9 +26,13 @@ public class knife : MonoBehaviour
                     other.GetComponent<EnemyHealth>().EnemyKnockback(this.gameObject, newPos);
                     //other.GetComponent<EnemyHealth>().EnemyKnockback(newPos);
                     other.GetComponent<EnemyHealth>().DamageEnemy();
-                    //other.GetComponent<AIPath>().canMove = true;
-                    this.gameObject.SetActive(false);
+                    // CALL COROUTINE TIMER
+                    StartCoroutine(StunTimer());
+                    other.GetComponent<AIPath>().canSearch = true;
+                    //this.gameObject.SetActive(false);
+                    Destroy(gameObject);
                     break;
+
                 }
 
                 if (other.CompareTag("Object"))
@@ -40,12 +44,14 @@ public class knife : MonoBehaviour
                 if (other.CompareTag("Wall"))
                 {
                     Destroy(gameObject);
-
                     break;
                 }
             }
         }
-
         transform.position = newPos;
+    }
+
+    IEnumerator StunTimer(){
+        yield return new WaitForSeconds(1f);
     }
 }

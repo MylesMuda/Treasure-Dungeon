@@ -43,14 +43,14 @@ public class EnemyHealth : MonoBehaviour
 
         // while(stunStart < stunTime){
         //     stunStart += Time.deltaTime;
-            gameObject.GetComponent<AIPath>().canSearch = false;
-            Vector3 knifeDir = knifePos;
-            Vector3 moveDirection = gameObject.transform.position - knifeDir;
-            enemyRB.AddForce(moveDirection * 300f);
-            StartCoroutine(StunTimer());
+        gameObject.GetComponent<AIPath>().canSearch = false;
+        Vector3 knifeDir = knifePos;
+        Vector3 moveDirection = knifeDir - gameObject.transform.position;
+        enemyRB.AddForce(moveDirection * 300f);
+            //StartCoroutine(StunTimer());
             //yield return null;
-            Debug.Log("Knockback");
-            gameObject.GetComponent<AIPath>().canSearch = true;
+        Debug.Log("Knockback");
+            //gameObject.GetComponent<AIPath>().canSearch = true;
             
             //yield return null;
         //Debug.Log(moveDirection);
@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     IEnumerator StunTimer(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
     }
     
 }

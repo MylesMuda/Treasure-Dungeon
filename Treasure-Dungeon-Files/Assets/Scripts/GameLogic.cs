@@ -26,5 +26,6 @@ public class GameLogic : MonoBehaviour
     {
         SceneManager.LoadScene("Test-Area");
         Score.score = 0;
+        ChestUI.NoOfChests=0;
     }
 }
