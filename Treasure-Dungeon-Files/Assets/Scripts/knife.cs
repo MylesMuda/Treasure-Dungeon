@@ -23,12 +23,12 @@ public class knife : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     
-                    other.GetComponent<EnemyHealth>().EnemyKnockback(this.gameObject, newPos);
+                    other.GetComponent<EnemyHealth>().CallKnockback(this.gameObject, newPos);
                     //other.GetComponent<EnemyHealth>().EnemyKnockback(newPos);
                     other.GetComponent<EnemyHealth>().DamageEnemy();
                     // CALL COROUTINE TIMER
-                    StartCoroutine(StunTimer());
-                    other.GetComponent<AIPath>().canSearch = true;
+                    //StartCoroutine(StunTimer());
+                    //other.GetComponent<AIPath>().canSearch = true;
                     //this.gameObject.SetActive(false);
                     Destroy(gameObject);
                     break;

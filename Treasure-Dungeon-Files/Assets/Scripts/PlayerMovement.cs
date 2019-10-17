@@ -62,12 +62,11 @@ public class PlayerMovement : MonoBehaviour
             if (stopAiming)
             {
                 GameObject knife = Instantiate(knifePrefab, throwPoint.transform.position, Quaternion.Euler(transform.eulerAngles + new Vector3(0, 0, 270f)));
-                //knifePrefab.transform.Rotate(90, 0, 0);
+                
                 knife knifeScript = knife.GetComponent<knife>();
                 knifeScript.velocity = shootDirection * 15f;
                 knifeScript.knight = gameObject;
                 knife.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
-                //Destroy(knife, 1.0f);
             }
         }
         else
@@ -114,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 aim.Normalize();
             }
-            //aim.Normalize();
+
             isAiming = Input.GetButton("Fire1");
             stopAiming = Input.GetButtonUp("Fire1");
         }
@@ -142,9 +141,12 @@ public class PlayerMovement : MonoBehaviour
 
             collision.gameObject.GetComponent<Chest>().ChestOpen();
         }
-        else if (collision.gameObject.tag== "Coin"){
+    }
+
+    void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.tag== "Coin"){
             Score.score += 50;
             Destroy(collision.gameObject);
-        }
+        } 
     }
 }

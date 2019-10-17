@@ -14,20 +14,21 @@ public class EnemyHealth : MonoBehaviour
 
     public Animator enemyAnim;
 
+    private Coroutine stunCoroutine = null;
+
     void Start(){
         enemyHealth = maxHealth;
     } 
 
     public void DamageEnemy(){
         enemyHealth--;
-        //enemyAnim.SetBool("isHurt", true);
-        //gameObject.GetComponent<AIPath>().canMove = true;
         checkEnemyHealth();
     }
 
     public void checkEnemyHealth(){
         if(enemyHealth==0){
             Debug.Log("Enemy health is Zero");
+            InitialiseEnemy();
             GameObject.Find("GameLogic").GetComponent<GameLogic>().SpawnEnemy(gameObject);
         }
     }
@@ -36,30 +37,30 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth = maxHealth;
     }
 
-    public void EnemyKnockback(GameObject knife,  Vector2 knifePos){
-        
-        // var stunTime = 1.5f;
-        // var stunStart = 0.0f;
+    public IEnumerator EnemyKnockback(GameObject knife,  Vector2 knifePos){
+        gameObject.GetComponent<AIPath>().canMove = false;
 
-        // while(stunStart < stunTime){
-        //     stunStart += Time.deltaTime;
-        gameObject.GetComponent<AIPath>().canSearch = false;
         Vector3 knifeDir = knifePos;
-        Vector3 moveDirection = knifeDir - gameObject.transform.position;
-        enemyRB.AddForce(moveDirection * 300f);
-            //StartCoroutine(StunTimer());
-            //yield return null;
-        Debug.Log("Knockback");
-            //gameObject.GetComponent<AIPath>().canSearch = true;
-            
-            //yield return null;
-        //Debug.Log(moveDirection);
-        //enemyRB.AddForce(transform.up * 500f + transform.right * 500f);
-        //enemyAnim.SetBool("isHurt", false);
+        Vector3 moveDirection = gameObject.transform.position - knifeDir;
+        enemyRB.AddForce(moveDirection * 5f, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<AIPath>().canMove = true;
     }
 
     IEnumerator StunTimer(){
         yield return new WaitForSeconds(1f);
     }
-    
+
+    public void CallKnockback(GameObject knife, Vector2 knifePos){
+        this.stunCoroutine = StartCoroutine(EnemyKnockback(knife, knifePos));
+    }
+
+    public void InitialiseEnemy(){
+        StopCoroutine(stunCoroutine);
+        gameObject.GetComponent<AIPath>().canMove = true;
+        if (enemyRB){
+            enemyRB.velocity = Vector3.zero;
+        }
+    }    
 }
