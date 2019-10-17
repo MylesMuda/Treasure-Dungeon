@@ -38,14 +38,15 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public IEnumerator EnemyKnockback(GameObject knife,  Vector2 knifePos){
+        enemyAnim.SetBool("isHurt", true); 
         gameObject.GetComponent<AIPath>().canMove = false;
-
         Vector3 knifeDir = knifePos;
         Vector3 moveDirection = gameObject.transform.position - knifeDir;
-        enemyRB.AddForce(moveDirection * 5f, ForceMode2D.Impulse);
+        enemyRB.AddForce(moveDirection * 3f, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<AIPath>().canMove = true;
+        enemyAnim.SetBool("isHurt", false); 
     }
 
     IEnumerator StunTimer(){
@@ -59,6 +60,7 @@ public class EnemyHealth : MonoBehaviour
     public void InitialiseEnemy(){
         StopCoroutine(stunCoroutine);
         gameObject.GetComponent<AIPath>().canMove = true;
+        enemyAnim.SetBool("isHurt", false); 
         if (enemyRB){
             enemyRB.velocity = Vector3.zero;
         }
