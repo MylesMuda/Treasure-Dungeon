@@ -10,11 +10,12 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField]
     private int numOfHearts;
-
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite halfHeart;
     public Sprite emptyHeart;
+    public Rigidbody2D playerRB;
+    private Coroutine knockbackCoroutine;
 
     public void Update()
     {
@@ -57,6 +58,18 @@ public class PlayerHealth : MonoBehaviour
         {
             GameObject.Find("GameLogic").GetComponent<GameLogic>().RestartLevel();
         }
+    }
+
+    public void CallKnockback(Vector3 knockbackDirection){
+        this.knockbackCoroutine = StartCoroutine(PlayerKnockback(knockbackDirection));
+    }
+
+    public IEnumerator PlayerKnockback(Vector3 knockbackDirection){
+        Debug.Log("Entered Coroutine");
+        Vector3 moveDirection = gameObject.transform.position - knockbackDirection;
+        playerRB.AddForce(moveDirection * 300f, ForceMode2D.Impulse);
+        Debug.Log("Added force");
+        yield return new WaitForSeconds(0.3f);
     }
 
 }

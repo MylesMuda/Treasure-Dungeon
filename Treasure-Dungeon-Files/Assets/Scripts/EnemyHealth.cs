@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void checkEnemyHealth(){
         if(enemyHealth==0){
-            Debug.Log("Enemy health is Zero");
+            //Debug.Log("Enemy health is Zero");
             InitialiseEnemy();
             GameObject.Find("GameLogic").GetComponent<GameLogic>().SpawnEnemy(gameObject);
         }
@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
         enemyHealth = maxHealth;
     }
 
-    public IEnumerator EnemyKnockback(GameObject knife,  Vector2 knifePos){
+    public IEnumerator EnemyKnockback(Vector2 knifePos){
         enemyAnim.SetBool("isHurt", true); 
         gameObject.GetComponent<AIPath>().canMove = false;
         Vector3 knifeDir = knifePos;
@@ -49,12 +49,8 @@ public class EnemyHealth : MonoBehaviour
         enemyAnim.SetBool("isHurt", false); 
     }
 
-    IEnumerator StunTimer(){
-        yield return new WaitForSeconds(1f);
-    }
-
-    public void CallKnockback(GameObject knife, Vector2 knifePos){
-        this.stunCoroutine = StartCoroutine(EnemyKnockback(knife, knifePos));
+    public void CallKnockback(Vector2 knifePos){
+        this.stunCoroutine = StartCoroutine(EnemyKnockback(knifePos));
     }
 
     public void InitialiseEnemy(){
