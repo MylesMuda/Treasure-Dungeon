@@ -799,7 +799,28 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3885379068648269995}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &119399554
+--- !u!50 &119399554
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119399553}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &119399558
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -812,9 +833,33 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4834299}
+  m_Offset: {x: 0, y: 0.477857}
   serializedVersion: 2
-  m_Radius: 0.4834299
+  m_Radius: 0.477857
+--- !u!114 &119399559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119399553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1d3356db943ac48966829345abd5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  numOfHearts: 5
+  hearts:
+  - {fileID: 1072951358}
+  - {fileID: 1205649267}
+  - {fileID: 2104326266}
+  - {fileID: 819629425}
+  - {fileID: 30291955}
+  fullHeart: {fileID: 21300000, guid: e4bf5111f85659f4f890f38685270742, type: 3}
+  halfHeart: {fileID: 21300000, guid: a6af5ee74dd9ea846ac36e4cdf2a8b9d, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 28605f77e3122c6438da6cc7c05e30b9, type: 3}
+  playerRB: {fileID: 119399554}
 --- !u!1001 &119762916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2551,7 +2596,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151619087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d1d3356db943ac48966829345abd5d6, type: 3}
   m_Name: 
@@ -2567,7 +2612,7 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: e4bf5111f85659f4f890f38685270742, type: 3}
   halfHeart: {fileID: 21300000, guid: a6af5ee74dd9ea846ac36e4cdf2a8b9d, type: 3}
   emptyHeart: {fileID: 21300000, guid: 28605f77e3122c6438da6cc7c05e30b9, type: 3}
-  playerRB: {fileID: 0}
+  playerRB: {fileID: 119399554}
 --- !u!58 &151619091
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2575,7 +2620,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151619087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -14138,10 +14183,10 @@ PrefabInstance:
         type: 3}
       propertyPath: rb
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 119399554}
     - target: {fileID: 432260469, guid: 416031003a38a5744a9bf7e075016741, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 416031003a38a5744a9bf7e075016741, type: 3}

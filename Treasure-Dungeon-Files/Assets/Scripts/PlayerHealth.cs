@@ -66,10 +66,12 @@ public class PlayerHealth : MonoBehaviour
 
     public IEnumerator PlayerKnockback(Vector3 knockbackDirection){
         Debug.Log("Entered Coroutine");
+        gameObject.GetComponent<PlayerMovement>().animator.SetBool("IsHurt", true);
         Vector3 moveDirection = gameObject.transform.position - knockbackDirection;
-        playerRB.AddForce(moveDirection * 300f, ForceMode2D.Impulse);
+        playerRB.AddForce(moveDirection * -30f, ForceMode2D.Impulse);
         Debug.Log("Added force");
         yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<PlayerMovement>().animator.SetBool("IsHurt", false);
     }
 
 }

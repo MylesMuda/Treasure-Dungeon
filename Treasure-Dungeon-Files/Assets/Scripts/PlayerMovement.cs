@@ -135,10 +135,10 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.tag == "Enemy")
         {
-            GameObject.Find("Knight").GetComponent<PlayerHealth>().CallKnockback(
+            GameObject.Find("Knight1").GetComponent<PlayerHealth>().CallKnockback(
                 collision.gameObject.transform.position
             );
-            GameObject.Find("Knight").GetComponent<PlayerHealth>().Damage();
+            GameObject.Find("Knight1").GetComponent<PlayerHealth>().Damage();
         }
         else if (collision.gameObject.tag == "Chest"){
 
